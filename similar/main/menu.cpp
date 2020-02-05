@@ -1822,7 +1822,7 @@ static window_event_result select_file_handler(listbox *menu,const d_event &even
 					{
 #if defined(__APPLE__) && defined(__MACH__)
 						// For Mac OS X, list all active volumes if we leave the root
-						strcpy(newpath, "/Volumes");
+						strcpy(newpath.data(), "/Volumes");
 #else
 						return window_event_result::handled;
 #endif

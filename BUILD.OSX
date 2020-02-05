@@ -1,0 +1,2 @@
+brew install sdl sdl_mixer libpng physfs scons
+scons LINKFLAGS='-L/usr/local/lib -lSDLmain -lSDL -lSDL_mixer' CPPFLAGS='-I/usr/local/include/SDL -D_GNU_SOURCE=1 -D_THREAD_SAFE' opengl=1 sdlmixer=1

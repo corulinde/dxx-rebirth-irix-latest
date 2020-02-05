@@ -1440,9 +1440,6 @@ static void terminate_handler()
 		successflags = self.pkgconfig.merge(context, self.msgprefix, user_settings, mixer, mixer, guess_flags)
 		if user_settings.host_platform == 'darwin':
 			successflags = successflags.copy()
-			successflags['FRAMEWORKS'] = [mixer]
-			relative_headers = 'Library/Frameworks/%s.framework/Headers' % mixer
-			successflags['CPPPATH'] = [os.path.join(os.getenv("HOME"), relative_headers), '/%s' % relative_headers]
 		self._check_system_library(context,header=['SDL_mixer.h'],main='''
 	int i = Mix_Init(MIX_INIT_FLAC | MIX_INIT_OGG);
 	(void)i;
@@ -3935,12 +3932,9 @@ class DXXCommon(LazyObjectConstructor):
 		# arguments are included.
 		tools = ('gcc', 'g++', 'applelink')
 		def adjust_environment(self,program,env):
-			library_frameworks = os.path.join(os.getenv("HOME"), 'Library/Frameworks')
 			env.Append(
 				CPPDEFINES = ['__unix__'],
-				CPPPATH = [os.path.join(library_frameworks, 'SDL.framework/Headers'), '/Library/Frameworks/SDL.framework/Headers'],
-				FRAMEWORKS = ['ApplicationServices', 'Cocoa', 'SDL'],
-				FRAMEWORKPATH = [library_frameworks],
+				FRAMEWORKS = ['ApplicationServices', 'Cocoa'],
 				LINKFLAGS = ['-Wl,-rpath,@loader_path/../Frameworks'],	# Allow libraries & frameworks to go in app bundle
 			)
 			if self.user_settings.opengl or self.user_settings.opengles:
