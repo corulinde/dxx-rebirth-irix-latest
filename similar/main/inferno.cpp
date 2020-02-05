@@ -96,7 +96,8 @@ char copyright[] = "DESCENT II  COPYRIGHT (C) 1994-1996 PARALLAX SOFTWARE CORPOR
 #include "event.h"
 #include "rbaudio.h"
 #if DXX_WORDS_NEED_ALIGNMENT
-#include <sys/prctl.h>
+// SGUG OS X testing modification - may not be IRIX appropriate
+//#include <sys/prctl.h>
 #endif
 #if DXX_USE_EDITOR
 #include "messagebox.h"
@@ -738,7 +739,8 @@ int main(int argc, char *argv[])
 {
 	mem_init();
 #if DXX_WORDS_NEED_ALIGNMENT
-	prctl(PR_SET_UNALIGN, PR_UNALIGN_NOPRINT, 0, 0, 0);
+	// SGUG fix - linux specific
+//	prctl(PR_SET_UNALIGN, PR_UNALIGN_NOPRINT, 0, 0, 0);
 #endif
 #if defined(WIN32) || defined(__APPLE__) || defined(__MACH__)
 #if DXX_USE_EDITOR

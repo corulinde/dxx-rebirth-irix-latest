@@ -1058,9 +1058,9 @@ int main(int argc,char**argv){(void)argc;(void)argv;
 		context.Result('%s: checking endian to use...%s' % (self.msgprefix, __endian_names[endian]))
 		self._define_macro(context, 'DXX_WORDS_BIGENDIAN', endian)
 
-	@_custom_test
-	def _check_user_settings_words_need_alignment(self,context):
-		self._result_check_user_setting(context, self.user_settings.words_need_alignment, 'DXX_WORDS_NEED_ALIGNMENT', 'word alignment fixups')
+	# @_custom_test
+	# def _check_user_settings_words_need_alignment(self,context):
+	#	self._result_check_user_setting(context, self.user_settings.words_need_alignment, 'DXX_WORDS_NEED_ALIGNMENT', 'word alignment fixups')
 
 	@_custom_test
 	def _check_user_settings_opengl(self,context):

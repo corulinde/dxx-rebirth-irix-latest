@@ -1,2 +1,8 @@
+# Deps
 brew install sdl sdl_mixer libpng physfs scons
-scons LINKFLAGS='-L/usr/local/lib -lSDLmain -lSDL -lSDL_mixer' CPPFLAGS='-I/usr/local/include/SDL -D_GNU_SOURCE=1 -D_THREAD_SAFE' opengl=1 sdlmixer=1
+
+# Build
+scons --config=force LINKFLAGS='-L/usr/local/lib -lSDLmain -lSDL -lSDL_mixer' CPPFLAGS='-I/usr/local/include/SDL -D_GNU_SOURCE=1 -D_THREAD_SAFE -DDXX_WORDS_NEED_ALIGNMENT=1' opengl=1 sdlmixer=1
+
+# Run
+./D1X-Rebirth.app/Contents/MacOS/d1x-rebirth -hogdir $(pwd)/data -window
