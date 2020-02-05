@@ -88,9 +88,15 @@ static int pof_read_int(ubyte *bufp)
 {
 	int i;
 
-	i = *(reinterpret_cast<int *>(&bufp[Pof_addr]));
-	Pof_addr += 4;
-	return INTEL_INT(i);
+	// Original DXX
+//	i = *(reinterpret_cast<int *>(&bufp[Pof_addr]));
+//	Pof_addr += 4;
+//	return INTEL_INT(i);
+
+    // SGUG modified DXX
+    i = GET_INTEL_INT(&bufp[Pof_addr]);
+    Pof_addr += 4;
+    return i;
 
 //	if (PHYSFS_read(f,&i,sizeof(i),1) != 1)
 //		Error("Unexpected end-of-file while reading object");
@@ -120,9 +126,16 @@ static short pof_read_short(ubyte *bufp)
 {
 	short s;
 
-	s = *(reinterpret_cast<int16_t *>(&bufp[Pof_addr]));
-	Pof_addr += 2;
-	return INTEL_SHORT(s);
+	// Original DXX
+//	s = *(reinterpret_cast<int16_t *>(&bufp[Pof_addr]));
+//	Pof_addr += 2;
+//	return INTEL_SHORT(s);
+
+    // SGUG modified DXX
+    s = GET_INTEL_SHORT(&bufp[Pof_addr]);
+    Pof_addr += 2;
+    return s;
+
 //	if (PHYSFS_read(f,&s,sizeof(s),1) != 1)
 //		Error("Unexpected end-of-file while reading object");
 //
