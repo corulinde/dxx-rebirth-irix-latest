@@ -737,7 +737,7 @@ static int main(int argc, char *argv[])
 int main(int argc, char *argv[])
 {
 	mem_init();
-#if DXX_WORDS_NEED_ALIGNMENT
+#if DXX_WORDS_NEED_ALIGNMENT and !defined(__sgi)
 	prctl(PR_SET_UNALIGN, PR_UNALIGN_NOPRINT, 0, 0, 0);
 #endif
 #if defined(WIN32) || defined(__APPLE__) || defined(__MACH__)

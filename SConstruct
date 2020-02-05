@@ -3612,7 +3612,7 @@ class DXXCommon(LazyObjectConstructor):
 			expect_sconf_tuple = ('0', '1', conftests.expect_sconf_success, conftests.expect_sconf_failure)
 			sconf_tuple = ('0', '1', '2', conftests.sconf_force_failure, conftests.sconf_force_success, conftests.sconf_assume_success)
 			sys_platform = sys.platform
-			for platform in ('linux', 'freebsd', 'openbsd'):
+			for platform in ('linux', 'freebsd', 'openbsd', 'irix646'):
 				if sys_platform.startswith(platform):
 					sys_platform = platform
 					break
@@ -3645,7 +3645,7 @@ class DXXCommon(LazyObjectConstructor):
 						'cross-compile to specified platform',
 						{
 							'map': {'msys':'win32'},
-							'allowed_values' : ('darwin', 'linux', 'freebsd', 'openbsd', 'win32'),
+							'allowed_values' : ('darwin', 'linux', 'freebsd', 'openbsd', 'win32', 'irix646'),
 							}
 						),
 					('raspberrypi', None, 'build for Raspberry Pi (automatically selects opengles)', {'ignorecase': 2, 'map': {'1':'yes', 'true':'yes', '0':'no', 'false':'no'}, 'allowed_values': ('yes', 'no', 'mesa')}),
