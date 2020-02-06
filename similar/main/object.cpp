@@ -118,6 +118,75 @@ namespace dcx {
 // -- Object stuff
 
 //info on the various types of objects
+char *object_type_to_str(object_type_t type){
+    switch(type){
+        case OBJ_NONE:
+            return "OBJ_NONE";
+        case OBJ_WALL:
+            return "OBJ_WALL";
+        case OBJ_FIREBALL:
+            return "OBJ_FIREBALL";
+        case OBJ_ROBOT:
+            return "OBJ_ROBOT";
+        case OBJ_HOSTAGE:
+            return "OBJ_HOSTAGE";
+        case OBJ_PLAYER:
+            return "OBJ_PLAYER";
+        case OBJ_WEAPON:
+            return "OBJ_WEAPON";
+        case OBJ_CAMERA:
+            return "OBJ_CAMERA";
+        case OBJ_POWERUP:
+            return "OBJ_POWERUP";
+        case OBJ_DEBRIS:
+            return "OBJ_DEBRIS";
+        case OBJ_CNTRLCEN:
+            return "OBJ_CNTRLCEN";
+        case OBJ_CLUTTER:
+            return "OBJ_CLUTTER";
+        case OBJ_GHOST:
+            return "OBJ_GHOST";
+        case OBJ_LIGHT:
+            return "OBJ_LIGHT";
+        case OBJ_COOP:
+            return "OBJ_COOP";
+        case OBJ_MARKER:
+            return "OBJ_MARKER";
+    }
+    return "UNKNOWN";
+}
+
+char *movement_type_to_str(movement_type_t type){
+    switch(type){
+        case MT_NONE:
+            return "MT_NONE";
+        case MT_PHYSICS:
+            return "MT_PHYSICS";
+        case MT_SPINNING:
+            return "MT_SPINNING";
+    }
+    return "UNKNOWN";
+}
+
+void debug_object_base(struct object_base *obj){
+    fprintf(stderr,
+            "Object type: %s subtype/ID: %d "
+            "Movement: %s Segment: %d\n"
+            "Pos: (%f, %f, %f) "
+            "Orientation: <R(%f, %f, %f), U(%f, %f, %f), F(%f, %f, %f)> "
+            "Size: %f\n"
+            "Shields: %f Life: %f\n",
+            object_type_to_str(obj->type),
+            ((int)obj->id & 0xFF),
+            movement_type_to_str(obj->movement_type),
+            ((int)obj->segnum & 0xFFFF),
+            f2fl(obj->pos.x), f2fl(obj->pos.y), f2fl(obj->pos.z),
+            f2fl(obj->orient.rvec.x), f2fl(obj->orient.rvec.y), f2fl(obj->orient.rvec.z),
+                f2fl(obj->orient.uvec.x), f2fl(obj->orient.uvec.y), f2fl(obj->orient.uvec.z),
+                f2fl(obj->orient.fvec.x), f2fl(obj->orient.fvec.y), f2fl(obj->orient.fvec.z),
+            f2fl(obj->size),
+            f2fl(obj->shields), f2fl(obj->lifeleft));
+}
 }
 
 namespace dsx {

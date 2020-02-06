@@ -78,12 +78,16 @@ enum object_type_t : uint8_t
 	OBJ_MARKER	= 15,  // a map marker
 };
 
+char *object_type_to_str(object_type_t);
+
 enum movement_type_t : uint8_t
 {
 	MT_NONE = 0,   // doesn't move
 	MT_PHYSICS = 1,   // moves by physics
 	MT_SPINNING = 3,   // this object doesn't move, just sits and spins
 };
+
+char *movement_type_to_str(movement_type_t);
 
 }
 
@@ -409,6 +413,8 @@ struct object_base
 	} rtype;
 };
 
+
+void debug_object_base(struct object_base *);
 }
 
 namespace dsx {

@@ -52,3 +52,14 @@ xcuserdata
 # PyCharm generated files #
 ###########################
 .idea
+
+.sconf_temp
+cmake-build-debug
+d1x-rebirth/d1x-rebirth
+d1x-rebirth/kconfig.udlr.h
+d2x-rebirth/d2x-rebirth
+d2x-rebirth/kconfig.udlr.h
+data
+dxxsconf.h
+similar/main/.d1x-rebirth.kconfig.ui-table.i
+similar/main/.d2x-rebirth.kconfig.ui-table.i

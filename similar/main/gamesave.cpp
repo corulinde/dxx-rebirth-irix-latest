@@ -192,6 +192,8 @@ namespace dsx {
 
 static void verify_object(const d_vclip_array &Vclip, object &obj)
 {
+    debug_object_base(&obj);
+
 	auto &Robot_info = LevelSharedRobotInfoState.Robot_info;
 	obj.lifeleft = IMMORTAL_TIME;		//all loaded object are immortal, for now
 
